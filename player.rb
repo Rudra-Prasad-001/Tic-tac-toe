@@ -1,25 +1,22 @@
+# frozen_string_literal: true
+
 require_relative 'board'
+
 class Player
-  attr_accessor :name , :symbol
+  attr_accessor :name, :symbol
 
-  def initialize(name,symbol)
-
+  def initialize(name, symbol)
     @name = name
     @symbol = symbol
-
   end
 
   def take_turn(board)
     loop do
       puts "#{@name} selects #{@symbol}, please choose a position 1-9"
       position = gets.chomp.to_i - 1
-      if board.update_position(symbol,position)
-        break
-      end
+      break if board.update_position(symbol, position)
 
-      puts "You chose a wrong position, please try again!"
-  
+      puts 'You chose a wrong position, please try again!'
     end
-    
   end
 end
